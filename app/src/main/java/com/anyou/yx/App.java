@@ -163,7 +163,8 @@ public class App extends Application {
         }
     }
 
-    public void queryDB() {
+    public String queryDB() {
+        List<StoreLocation> ll = new ArrayList<>();
         initDB();
         Cursor cursor = mSqLiteDatabase.query(DatabaseHelper.TABLE_NAME,
                 new String[]{DatabaseHelper.F_ID,
@@ -177,9 +178,19 @@ public class App extends Application {
         if (cursor.moveToFirst()) {
             int count = cursor.getCount();
             for (int i = 0; i < count; i++) {
-                String id = cursor.getString(cursor.getColumnIndex(DatabaseHelper.F_ID));
-                System.out.println(id);
+                StoreLocation storeLocation = new StoreLocation();
+                storeLocation.id = Long.parseLong(cursor.getString(cursor.getColumnIndex(DatabaseHelper.F_ID)));
+                storeLocation.lat = Double.parseDouble(cursor.getString(cursor.getColumnIndex(DatabaseHelper.F_LAT)));
+                storeLocation.lng = Double.parseDouble(cursor.getString(cursor.getColumnIndex(DatabaseHelper.F_LNG)));
+                storeLocation.name = cursor.getString(cursor.getColumnIndex(DatabaseHelper.F_NAME));
+                storeLocation.address = cursor.getString(cursor.getColumnIndex(DatabaseHelper.F_ADDRESS));
+                storeLocation.mark = cursor.getString(cursor.getColumnIndex(DatabaseHelper.F_MARK));
+                storeLocation.image = cursor.getString(cursor.getColumnIndex(DatabaseHelper.F_IMAGE));
+                ll.add(storeLocation);
             }
         }
+        Gson gson = new Gson();
+        String json = gson.toJson(ll);
+        return json;
     }
 }
