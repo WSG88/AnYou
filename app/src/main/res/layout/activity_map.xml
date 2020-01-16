@@ -1,26 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <com.tencent.tencentmap.mapsdk.map.MapView
         android:id="@+id/mapviewOverlay"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="200dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="位置" />
+
+        <EditText
+            android:id="@+id/myEdt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/myBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="定位" />
+
+        <Button
+            android:id="@+id/myClearBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="清空" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="名称" />
+
+        <EditText
+            android:id="@+id/nameEdt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/nameClearBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="清空" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="备注" />
+
+        <EditText
+            android:id="@+id/markEdt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/markClearBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="清空" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="图片" />
+
+        <EditText
+            android:id="@+id/imageEdt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/imageBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="拍照" />
+
+        <Button
+            android:id="@+id/imageClearBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="清空" />
+    </LinearLayout>
 
     <Button
-        android:id="@+id/myBtn"
-        android:layout_width="wrap_content"
+        android:id="@+id/saveBtn"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
-        android:text="@string/my_location" />
-
-    <TextView
-        android:id="@+id/myTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true" />
-
-</RelativeLayout>
+        android:layout_marginTop="20dp"
+        android:text="保存" />
+</LinearLayout>

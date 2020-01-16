@@ -5,6 +5,8 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Environment;
 
 import androidx.multidex.MultiDex;
@@ -12,7 +14,9 @@ import androidx.multidex.MultiDex;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
@@ -75,6 +79,27 @@ public class App extends Application {
         try (Sink fileSink = Okio.sink(file);
              BufferedSink bufferedSink = Okio.buffer(fileSink)) {
             bufferedSink.writeUtf8(json);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void saveImageFIle(String fileName) {
+        try {
+            Bitmap b = BitmapFactory.decodeFile(fileName);
+            File myCaptureFile = new File(fileName);
+            if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+                if (!myCaptureFile.getParentFile().exists()) {
+                    myCaptureFile.getParentFile().mkdirs();
+                }
+                BufferedOutputStream bos;
+                bos = new BufferedOutputStream(new FileOutputStream(myCaptureFile));
+                b.compress(Bitmap.CompressFormat.JPEG, 60, bos);
+                bos.flush();
+                bos.close();
+            } else {
+                System.out.println("保存失败");
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

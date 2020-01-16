@@ -25,12 +25,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, SeeActivity.class));
             }
         });
-        findViewById(R.id.photoTv).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, PhotoActivity.class));
-            }
-        });
+
     }
 
 }

@@ -6,8 +6,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
-    public static final int VERSION = 1;
-    public static final String DATABASE_NAME = "database.db";
+    public static final int VERSION = 2;
+    public static final String DATABASE_NAME = "ddd.db";
     public static final String TABLE_NAME = "store";
     public static final String F_ID = "id";
     public static final String F_NAME = "name";
@@ -23,16 +23,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table " + TABLE_NAME
+        String sql = "create table " + TABLE_NAME
                 + "("
-                + F_ID + " varchar(64) not null,"
-                + F_NAME + " varchar(64) not null,"
-                + F_ADDRESS + " varchar(64) not null,"
-                + F_IMAGE + " varchar(128) not null,"
-                + F_MARK + " varchar(64) not null,"
+                + F_ID + " varchar(64) ,"
+                + F_NAME + " varchar(64) ,"
+                + F_ADDRESS + " varchar(64) ,"
+                + F_IMAGE + " varchar(128) ,"
+                + F_MARK + " varchar(64) ,"
                 + F_LNG + " varchar(64) ,"
                 + F_LAT + " varchar(64) "
-                + ")");
+                + ")";
+        System.out.println(sql);
+        db.execSQL(sql);
     }
 
     @Override
