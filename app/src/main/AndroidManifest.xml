@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.anyou.yx">
+
+    <!-- To access Google+ APIs: -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <!-- 腾讯定位 sdk 要求的权限  (开始) -->
     <!-- 通过GPS得到精确位置 -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- 通过网络得到粗略位置 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- Android Q新增权限，允许应用在后台发起定位，如应用target为Q，请添加此权限 -->
-    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" /> <!-- 访问网络. 某些位置信息需要从网络服务器获取 -->
-    <uses-permission android:name="android.permission.INTERNET" /> <!-- 访问WiFi状态. 需要WiFi信息用于网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" /> <!-- 访问WiFi状态. 需要WiFi信息用于网络定位 -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 修改WiFi状态. 发起WiFi扫描, 需要WiFi信息用于网络定位 -->
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" /> <!-- 访问网络状态, 检测网络的可用性. 需要网络运营商相关信息用于网络定位 -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 访问网络的变化, 需要某些信息用于网络定位 -->
@@ -49,13 +52,14 @@
         <meta-data
             android:name="TencentMapSDK"
             android:value="TISBZ-QUL63-PXH3V-3Z2NE-I4I3K-U4FN2" />
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.anyou.yx.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
 
-            <!--指定Uri的共享路径-->
+            <!-- 指定Uri的共享路径 -->
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider_paths" />

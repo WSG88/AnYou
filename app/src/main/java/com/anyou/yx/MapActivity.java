@@ -155,8 +155,6 @@ public class MapActivity extends com.tencent.tencentmap.mapsdk.map.MapActivity i
                                   String reason) {
         if (error == TencentLocation.ERROR_OK) {
 
-            stopLocation();
-
             System.out.println("定位成功");
 
             tencentLocation = location;
@@ -173,6 +171,8 @@ public class MapActivity extends com.tencent.tencentmap.mapsdk.map.MapActivity i
             }
 
             myEdt.setText(location.getAddress());
+
+            stopLocation();
         }
     }
 
